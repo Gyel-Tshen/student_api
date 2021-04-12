@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # acts_as_token_authenticatable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  include Devise::JWT::RevocationStrategies::JTIMatcher
+
   
   has_many :participations
   has_many :activities, :through => :participations
@@ -11,7 +13,8 @@ class User < ApplicationRecord
   has_many :roles, through: :user_roles
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable,
+         :jwt_authenticatable, jwt_revocation_strategy: JwtDenylist
   
   # def generate_new_authentication_token
   #   token = User.generate_unique_secure_token 

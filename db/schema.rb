@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_185243) do
+ActiveRecord::Schema.define(version: 2021_04_08_180522) do
 
   create_table "activities", force: :cascade do |t|
     t.string "aname"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 2021_04_03_185243) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["role_id"], name: "index_assignments_on_role_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
+
+  create_table "jwt_denylists", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "exp", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["jti"], name: "index_jwt_denylists_on_jti"
   end
 
   create_table "participations", force: :cascade do |t|

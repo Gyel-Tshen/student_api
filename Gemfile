@@ -19,6 +19,8 @@ gem 'simple_token_authentication', '~> 1.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
+gem 'devise-jwt'
+
 gem 'pundit'
 
 gem 'rolify'
@@ -55,3 +57,6 @@ group :development do
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+

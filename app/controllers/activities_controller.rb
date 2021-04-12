@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
     end
 
     def create 
-        authorize @activity
+        #authorize Activity
         activity = Activity.new(activity_params)
         if activity.save
             json_response "activity created", true, {activity: @activity}, :created 
@@ -57,8 +57,8 @@ class ActivitiesController < ApplicationController
 
     private
 
-    def article_params
-        params.require(:activity).permit(:ano, :types, :category, :date)
+    def activity_params
+        params.require(:activity).permit(:aname, :types, :category, :date)
     end
 
     def set_activity
